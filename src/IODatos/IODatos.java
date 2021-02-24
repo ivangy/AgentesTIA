@@ -37,8 +37,9 @@ public class IODatos {
 	}
 	
 	public static void leerPisos(){
-		String nombreFichero = "recursos/Pisos.txt";
+		String nombreFichero = "/home/dawb/Escritorio/AgentesTIA/src/recursos/Pisos.txt";
 		String nombre, direccion, numero;
+		String ler = "";
 		File f = new File(nombreFichero);
 	}
 	public static void main(String[] args) {
