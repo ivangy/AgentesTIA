@@ -7,12 +7,14 @@ import java.io.IOException;
 import java.util.Scanner;
 
 public class IODatos {
-	public static void leerArmas(){
-		String nombreFichero = "/home/dawb/Escritorio/AgentesTIA/src/recursos/Armas.txt";
-		String arma;
+
+	public static String[] leerDatos(String ruta){
+		String nombreFichero = "/home/dawb/Escritorio/AgentesTIA/src/recursos/" + ruta +".txt";
+		String piso;
 		String ler = "";
+		String vPisos[]= new String[10];
+		int i = 0;
 		File f = new File(nombreFichero);
-		
 		if(!f.exists())
 			try {
 				f.createNewFile();
@@ -25,24 +27,34 @@ public class IODatos {
 
 			while (leer.hasNext()) {
 				ler = leer.nextLine().trim();
-				arma = ler.substring(0);
-				System.out.println(arma);
-				
+			
+				vPisos[i]= ler;
+				i++;
 			}
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
 		} catch (IOException e1) {
 			e1.printStackTrace();
 		}
+		
+		return vPisos;
+	}
+
+	public static void borrarInformacion() {
+		String nombreFichero = "/home/dawb/Escritorio/AgentesTIA/src/recursos/prueba.txt";
+		File f = new File(nombreFichero);
+	
+		if(f.exists()) {
+			f.delete();	
+		}
 	}
 	
-	public static void leerPisos(){
-		String nombreFichero = "/home/dawb/Escritorio/AgentesTIA/src/recursos/Pisos.txt";
-		String nombre, direccion, numero;
-		String ler = "";
-		File f = new File(nombreFichero);
+	public static void encriptarInformacion() {
+		
 	}
 	public static void main(String[] args) {
-		leerArmas();
+		//leerArmas();
+		leerDatos("Pisos");
+		//borrarInformacion();
 	}
 }
