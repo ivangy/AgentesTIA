@@ -1,5 +1,7 @@
 package AgentesTIA;
 
-public class AgenteEspia {
+public class AgenteEspia extends Agentes{
+	
+	private String pisos;
 
 }
