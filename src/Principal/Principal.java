@@ -4,7 +4,7 @@ import java.util.Scanner;
 
 public class Principal {
 
-	public static void main(String[] args) {
+	public static int PintaMenu() {
 		
 		int opc;
 		
@@ -34,10 +34,14 @@ public class Principal {
 				System.out.println("Esta opcion es invalida, vuelve a intertarlo");
 			}
 		} while ((opc < 1) || (opc > 8));
-
 		
-		//return opc;   cambiar static void por static int 
+		return opc;   
 
+	}
+	
+	public static void main(String[] args) {
+		
+		
 	}
 	
 }
