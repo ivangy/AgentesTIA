@@ -11,6 +11,12 @@ public class Agentes {
 	private int salario;
 	
 	
+	public Agentes (int edad, String direccion, int salirio){
 	
-
+		
+		
+	}
+	
+	
+	
 }
