@@ -171,11 +171,26 @@ public class IODatos {
 
 	}
 
-	public static void main(String[] args) {
-		// leerDatos("Pisos");
-		// borrarInformacion();
-		//encriptarInformacion();
-		//desencriptarInformacion();
+	public static void darAlta(String ruta, String dato) {
+		String nombreFichero = "/home/dawb/Escritorio/AgentesTIA/src/recursos/"+ruta+".txt";
+		File f = new File(nombreFichero);
+		
+		if(f.exists()) {
+			try (FileWriter fw = new FileWriter(f); PrintWriter writer = new PrintWriter(fw);) {
+				
+				while (true) {
+					writer.println(dato);
+				}
 
+			} catch (FileNotFoundException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				// e.printStackTrace();
+			}
+			
+		}else System.out.println("desencripta la informacion antes de meter un nuevo "+ruta);
 	}
+
 }
