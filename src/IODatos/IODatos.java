@@ -192,5 +192,13 @@ public class IODatos {
 			
 		}else System.out.println("desencripta la informacion antes de meter un nuevo "+ruta);
 	}
+	public static void main(String[] args) {
+		// leerDatos("Pisos");
+		// borrarInformacion();
+		//encriptarInformacion();
+		//desencriptarInformacion();
+		//darAlta("Armas","escopeta");
+
+	}
 
 }
