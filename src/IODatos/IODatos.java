@@ -88,7 +88,8 @@ public class IODatos {
 			} catch (IOException ioe) {
 				ioe.printStackTrace();
 			}
-		}
+		} else
+			System.out.println("Ya está encriptado el archivo Armas");
 
 		if (pisosOrigin.exists()) {
 			String[] v1 = leerDatos("Pisos");
@@ -109,7 +110,8 @@ public class IODatos {
 			} catch (IOException ioe) {
 				ioe.printStackTrace();
 			}
-		}
+		} else
+			System.out.println("Ya está encriptado el archivo Pisos");
 	}
 
 	public static void desencriptarInformacion() {
@@ -117,70 +119,85 @@ public class IODatos {
 		String pisos = "/home/dawb/Escritorio/AgentesTIA/src/recursos/Pisos.txt";
 		String armasEn = "/home/dawb/Escritorio/AgentesTIA/src/recursos/Armas.dat";
 		String pisosEn = "/home/dawb/Escritorio/AgentesTIA/src/recursos/Pisos.dat";
-		
+
 		File fArmas = new File(armas);
 		File fPisos = new File(pisos);
 		File fArmasEn = new File(armasEn);
 		File fPisosEn = new File(pisosEn);
-		
-		if (fArmasEn.exists()) {
-			try (FileInputStream fi = new FileInputStream(fArmasEn); DataInputStream leer = new DataInputStream(fi);
-					FileWriter fw = new FileWriter(fArmas);
-					PrintWriter writer = new PrintWriter(fw);) {
-				
-				fArmas.createNewFile();
-				
-				
-				while (true) {
-					writer.println(leer.readUTF());
-				}
+		String usu = "", pass = "", fin = "";
+		Scanner ler = new Scanner(System.in);
 
-			} catch (FileNotFoundException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			} catch (IOException e) {
-				// TODO Auto-generated catch block
-				// e.printStackTrace();
-			}
-			borrarInformacion("Armas.dat");
-		} else
-			System.out.println("Ese archivo no existe");
+		do {
+			System.out.println("Dime el usuario");
+			usu = ler.nextLine();
+			if (usu.equals("admin")) {
+				System.out.println("Dime la contraseña");
+				pass = ler.nextLine();
+				if (pass.equals("admin")) {
 
-		if (fPisosEn.exists()) {
-			try (FileInputStream fi = new FileInputStream(fPisosEn); DataInputStream leer = new DataInputStream(fi);
-					FileWriter fw = new FileWriter(fPisos);
-					PrintWriter writer = new PrintWriter(fw);) {
-				
-				fPisos.createNewFile();
-				
-				
-				while (true) {
-					writer.println(leer.readUTF());
-				}
+					if (fArmasEn.exists()) {
+						try (FileInputStream fi = new FileInputStream(fArmasEn);
+								DataInputStream leer = new DataInputStream(fi);
+								FileWriter fw = new FileWriter(fArmas);
+								PrintWriter writer = new PrintWriter(fw);) {
 
-			} catch (FileNotFoundException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			} catch (IOException e) {
-				// TODO Auto-generated catch block
-				// e.printStackTrace();
-			}
-			borrarInformacion("Pisos.dat");
-		} else
-			System.out.println("Ese archivo no existe");
+							fArmas.createNewFile();
+
+							while (true) {
+								writer.println(leer.readUTF());
+							}
+
+						} catch (FileNotFoundException e) {
+							// TODO Auto-generated catch block
+							e.printStackTrace();
+						} catch (IOException e) {
+							// TODO Auto-generated catch block
+							// e.printStackTrace();
+						}
+						borrarInformacion("Armas.dat");
+					} else
+						System.out.println("Ya está desencriptado el archivo Armas");
+
+					if (fPisosEn.exists()) {
+						try (FileInputStream fi = new FileInputStream(fPisosEn);
+								DataInputStream leer = new DataInputStream(fi);
+								FileWriter fw = new FileWriter(fPisos);
+								PrintWriter writer = new PrintWriter(fw);) {
+
+							fPisos.createNewFile();
+
+							while (true) {
+								writer.println(leer.readUTF());
+							}
+
+						} catch (FileNotFoundException e) {
+							// TODO Auto-generated catch block
+							e.printStackTrace();
+						} catch (IOException e) {
+							// TODO Auto-generated catch block
+							// e.printStackTrace();
+						}
+						borrarInformacion("Pisos.dat");
+					} else
+						System.out.println("Ya está desencriptado el archivo Pisos");
+					fin = "fin";
+				} else
+					System.out.println("ERROR");
+			} else
+				System.out.println("ERROR");
+
+		} while (fin != "fin");
 
 	}
 
 	public static void darAlta(String ruta, String dato) {
-		String nombreFichero = "/home/dawb/Escritorio/AgentesTIA/src/recursos/"+ruta+".txt";
+		String nombreFichero = "/home/dawb/Escritorio/AgentesTIA/src/recursos/" + ruta + ".txt";
 		File f = new File(nombreFichero);
-		
-		if(f.exists()) {
-			try (FileWriter fw = new FileWriter(f); PrintWriter writer = new PrintWriter(fw);) {
-				
-				while (true) {
-					writer.println(dato);
-				}
+
+		if (f.exists()) {
+			try (FileWriter fw = new FileWriter(f, true); PrintWriter writer = new PrintWriter(fw);) {
+
+				writer.println(dato);
 
 			} catch (FileNotFoundException e) {
 				// TODO Auto-generated catch block
@@ -189,8 +206,21 @@ public class IODatos {
 				// TODO Auto-generated catch block
 				// e.printStackTrace();
 			}
-			
-		}else System.out.println("desencripta la informacion antes de meter un nuevo "+ruta);
+
+		} else
+			System.out.println("desencripta la informacion antes de meter un nuevo " + ruta);
 	}
 
+	public static String pisos() {
+		Scanner leer = new Scanner(System.in);
+		System.out.println("Ciudad:");
+		String ciudad = leer.nextLine();
+		System.out.println("Calle:");
+		String calle = leer.nextLine();
+		System.out.println("Numero:");
+		String numero = leer.nextLine();
+
+		String piso = (ciudad + ", " + calle + " número " + numero);
+		return piso;
+	}
 }
