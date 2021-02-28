@@ -2,6 +2,8 @@ package Principal;
 
 import java.util.Scanner;
 
+import AgentesTIA.Agente007;
+import AgentesTIA.Agentes;
 import IODatos.IODatos;
 
 public class Principal {
@@ -17,11 +19,11 @@ public class Principal {
 			System.out.println("------------------------------------------------------");
 			System.out.println("Menú AgentesTIA");
 			System.out.println("------------------------------------------------------");
-			System.out.println("1 - Ver todos los agentes con su información");
-			System.out.println("2 - Ver los agentes que ganen más de una cantidad X");
+			System.out.println("1 - Ver todos los agentes con su información"); //acabado
+			System.out.println("2 - Ver los agentes que ganen más de una cantidad X"); //acabado
 			System.out.println("3 - Dar de alta un nuevo piso");        //acabado
 			System.out.println("4 - Dar de alta una nueva arma");       //acabado
-			System.out.println("5 - Dar de alta un nuevo agente");
+			System.out.println("5 - Dar de alta un nuevo agente");		//acabado
 			System.out.println("6 - Encriptar toda la información");    //acabado
 			System.out.println("7 - Desencriptar toda la información"); //acabado
 			System.out.println("8 - Salir");
@@ -41,19 +43,20 @@ public class Principal {
 	}
 
 	public static void main(String[] args) {
-
 		Scanner leer = new Scanner(System.in);
+		
 
 		int opcion = 0;
+		do {
 
 		while (opcion != 8) {
 			opcion = PintaMenu();
 			switch (opcion) {
 			case 1:
-
+				IODatos.mosAgentes();
 				break;
 			case 2:
-
+				IODatos.ordenarXdinero();
 				break;
 			case 3:
 
@@ -66,7 +69,7 @@ public class Principal {
 				IODatos.darAlta("Armas", nuArma);
 				break;
 			case 5:
-
+				IODatos.altaAgentes();
 				break;
 			case 6:
 
@@ -82,6 +85,7 @@ public class Principal {
 			}
 
 		}
+		} while (opcion!=8);
 
 	}
 

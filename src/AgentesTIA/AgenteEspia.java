@@ -1,13 +1,11 @@
 package AgentesTIA;
 
-public class AgenteEspia extends Agentes{
+public final class AgenteEspia extends Agentes{
 	
 	private String pisos;
-	
-	public AgenteEspia (String nombre, int edad, String direccion, int salario, String pisos) {
-		
+
+	public AgenteEspia(String nombre, int edad, String direccion, float salario, String pisos) {
 		super(nombre, edad, direccion, salario);
-		
 		this.pisos = pisos;
 	}
 
@@ -21,8 +19,12 @@ public class AgenteEspia extends Agentes{
 
 	@Override
 	public String toString() {
-		return super.toString() + "AgenteEspia [pisos=" + pisos + "]";
+		return "nombre= " + super.nombre + ", edad= " + super.edad + 
+		", dirección= " + super.direccion + ", salario= " +super.salario  
+		+ "€ , piso= " + pisos;
 	}
+	
+	
 	
 	
 

@@ -1,0 +1,1 @@
+nombre= pepe, edad= 19, dirección= casa1, salario= 1000.0€ , piso= Alcañiz, Paseo Andrade número 2

@@ -1,0 +1,3 @@
+Rifle
+Pistola
+franco

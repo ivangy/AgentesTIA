@@ -1,18 +1,14 @@
 package AgentesTIA;
 
-public class Agente007 extends Agentes{
+public final class Agente007 extends Agentes{
 	
 
 	private int muertes;
+	private String armas;
 	
-	private int armas;
-	
-	public Agente007(String nombre, int edad, String direccion, int salario, int muertes, int armas) {
-		
+	public Agente007(String nombre, int edad, String direccion, float salario, int muertes, String armas) {
 		super(nombre, edad, direccion, salario);
-		
 		this.muertes = muertes;
-		
 		this.armas = armas;
 	}
 
@@ -24,19 +20,23 @@ public class Agente007 extends Agentes{
 		this.muertes = muertes;
 	}
 
-	public int getArmas() {
+	public String getArmas() {
 		return armas;
 	}
 
-	public void setArmas(int armas) {
+	public void setArmas(String armas) {
 		this.armas = armas;
 	}
 
 	@Override
 	public String toString() {
-		return super.toString() + "Agente007 [muertes=" + muertes + ", armas=" + armas + "]";
+		return "nombre= " + super.nombre + ", edad= " + super.edad + 
+				", dirección= " + super.direccion + ", salario= " +super.salario  
+				+ "€ , muertes=" + muertes + ", arma=" + armas;
 	}
 
+	
+	
 	
 
 }
