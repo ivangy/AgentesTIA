@@ -23,7 +23,7 @@ import AgentesTIA.Agentes;
 public class IODatos {
 
 	public static String[] leerDatos(String ruta) {
-		String nombreFichero = "/home/dawb/Escritorio/AgentesTIA/src/recursos/" + ruta;
+		String nombreFichero = "C:\\Users\\IVANGY123\\Desktop\\AgentesTIA\\src\\recursos\\" + ruta;
 	
 		String ler = "";
 		String vDato[] = new String[10];
@@ -55,7 +55,7 @@ public class IODatos {
 	}
 	
 	public static void mosAgentes() {
-		String nombreFichero = "/home/dawb/Escritorio/AgentesTIA/src/recursos/Agentes.txt";
+		String nombreFichero = "C:\\Users\\IVANGY123\\Desktop\\AgentesTIA\\src\\recursos\\Agentes.txt";
 		String ler = "";
 		int i = 0;
 		File f = new File(nombreFichero);
@@ -84,7 +84,7 @@ public class IODatos {
 	}
 
 	public static void borrarInformacion(String ruta) {
-		String nombreFichero = "/home/dawb/Escritorio/AgentesTIA/src/recursos/" + ruta;
+		String nombreFichero = "C:\\Users\\IVANGY123\\Desktop\\AgentesTIA\\src\\recursos\\" + ruta;
 		File f = new File(nombreFichero);
 
 		if (f.exists()) {
@@ -93,19 +93,19 @@ public class IODatos {
 	}
 
 	public static void encriptarInformacion() {
-		String rut="/home/dawb/Escritorio/AgentesTIA/src/recursos/";
+		String rut="C:\\Users\\IVANGY123\\Desktop\\AgentesTIA\\src\\recursos\\";
 		String armas = rut+ "Armas.txt";
 		String armasEn = rut+ "Armas.dat";
 		String pisos = rut+ "Pisos.txt";
 		String pisosEn = rut+ "Pisos.dat";
 		String agentes = rut+ "Agentes.txt";
 		String agentesEn = rut+ "Agentes.dat";
-		String agente007 = rut+ "agentes/Agente007.txt";
-		String agente007En = rut+ "agentes/Agente007.dat";
-		String agenteEspia = rut+ "agentes/AgenteEspia.txt";
-		String agenteEspiaEn = rut+ "agentes/AgenteEspia.dat";
-		String agenteJefazo = rut+ "agentes/AgenteJefazo.txt";
-		String agenteJefazoEn = rut+ "agentes/AgenteJefazo.dat";
+		String agente007 = rut+ "agentes\\Agente007.txt";
+		String agente007En = rut+ "agentes\\Agente007.dat";
+		String agenteEspia = rut+ "agentes\\AgenteEspia.txt";
+		String agenteEspiaEn = rut+ "agentes\\AgenteEspia.dat";
+		String agenteJefazo = rut+ "agentes\\AgenteJefazo.txt";
+		String agenteJefazoEn = rut+ "agentes\\AgenteJefazo.dat";
 
 		
 		File armasOrigin = new File(armas);
@@ -197,7 +197,7 @@ public class IODatos {
 		
 		// Encriptar agente007.txt
 		if (agente007Origin.exists()) {
-			String[] v1 = leerDatos("agentes/Agente007.txt");
+			String[] v1 = leerDatos("agentes\\Agente007.txt");
 			if (agente007Destination.exists()) {
 				agente007Destination.delete();
 			}
@@ -210,7 +210,7 @@ public class IODatos {
 					}
 
 				}
-				borrarInformacion("agentes/Agente007.txt");
+				borrarInformacion("agentes\\Agente007.txt");
 
 			} catch (IOException ioe) {
 				ioe.printStackTrace();
@@ -223,7 +223,7 @@ public class IODatos {
 		
 			// Encriptar agenteEspia.txt
 			if (agenteEspiaOrigin.exists()) {
-				String[] v1 = leerDatos("agentes/AgenteEspia.txt");
+				String[] v1 = leerDatos("agentes\\AgenteEspia.txt");
 				if (agenteEspiaDestination.exists()) {
 					agenteEspiaDestination.delete();
 				}
@@ -236,7 +236,7 @@ public class IODatos {
 						}
 
 					}
-					borrarInformacion("agentes/AgenteEspia.txt");
+					borrarInformacion("agentes\\AgenteEspia.txt");
 
 				} catch (IOException ioe) {
 					ioe.printStackTrace();
@@ -247,7 +247,7 @@ public class IODatos {
 			
 			// Encriptar agenteJefazo.txt
 			if (agenteJefazoOrigin.exists()) {
-				String[] v1 = leerDatos("agentes/AgenteJefazo.txt");
+				String[] v1 = leerDatos("agentes\\AgenteJefazo.txt");
 				if (agenteJefazoDestination.exists()) {
 					agenteJefazoDestination.delete();
 				}
@@ -260,7 +260,7 @@ public class IODatos {
 						}
 
 					}
-					borrarInformacion("agentes/AgenteJefazo.txt");
+					borrarInformacion("agentes\\AgenteJefazo.txt");
 
 				} catch (IOException ioe) {
 					ioe.printStackTrace();
@@ -268,15 +268,10 @@ public class IODatos {
 			} else
 				System.out.println("Ya está encriptado el archivo AgenteJefazo");
 		
-		
-		
-		
-		
-		
 	}
 	
 	public static void desencriptarInformacion() {
-		String rut="/home/dawb/Escritorio/AgentesTIA/src/recursos/";
+		String rut="C:\\Users\\IVANGY123\\Desktop\\AgentesTIA\\src\\recursos\\";
 		
 		String armas = rut+ "Armas.txt";
 		String pisos = rut+ "Pisos.txt";
@@ -284,12 +279,12 @@ public class IODatos {
 		String pisosEn =  rut+ "Pisos.dat";
 		String agentes = rut+ "Agentes.txt";
 		String agentesEn = rut+ "Agentes.dat";
-		String agente007 = rut+ "agentes/Agente007.txt";
-		String agente007En = rut+ "agentes/Agente007.dat";
-		String agenteEspia = rut+ "agentes/AgenteEspia.txt";
-		String agenteEspiaEn = rut+ "agentes/AgenteEspia.dat";
-		String agenteJefazo = rut+ "agentes/AgenteJefazo.txt";
-		String agenteJefazoEn = rut+ "agentes/AgenteJefazo.dat";
+		String agente007 = rut+ "agentes\\Agente007.txt";
+		String agente007En = rut+ "agentes\\Agente007.dat";
+		String agenteEspia = rut+ "agentes\\AgenteEspia.txt";
+		String agenteEspiaEn = rut+ "agentes\\AgenteEspia.dat";
+		String agenteJefazo = rut+ "agentes\\AgenteJefazo.txt";
+		String agenteJefazoEn = rut+ "agentes\\AgenteJefazo.dat";
 
 		File fArmas = new File(armas);
 		File fArmasEn = new File(armasEn);
@@ -416,7 +411,7 @@ public class IODatos {
 							// TODO Auto-generated catch block
 							// e.printStackTrace();
 						}
-						borrarInformacion("agentes/Agente007.dat");
+						borrarInformacion("agentes\\Agente007.dat");
 					} else
 						System.out.println("Ya está desencriptado el archivo Agente007");
 					
@@ -442,7 +437,7 @@ public class IODatos {
 							// TODO Auto-generated catch block
 							// e.printStackTrace();
 						}
-						borrarInformacion("agentes/AgenteEspia.dat");
+						borrarInformacion("agentes\\AgenteEspia.dat");
 					} else
 						System.out.println("Ya está desencriptado el archivo AgenteEspia");
 					
@@ -468,7 +463,7 @@ public class IODatos {
 							// TODO Auto-generated catch block
 							// e.printStackTrace();
 						}
-						borrarInformacion("agentes/AgenteJefazo.dat");
+						borrarInformacion("agentes\\AgenteJefazo.dat");
 					} else
 						System.out.println("Ya está desencriptado el archivo AgenteJefazo");
 					
@@ -485,7 +480,7 @@ public class IODatos {
 	}
 
 	public static void darAlta(String ruta, String dato) {
-		String nombreFichero = "/home/dawb/Escritorio/AgentesTIA/src/recursos/" + ruta + ".txt";
+		String nombreFichero = "C:\\Users\\IVANGY123\\Desktop\\AgentesTIA\\src\\recursos\\" + ruta + ".txt";
 		File f = new File(nombreFichero);
 
 		if (f.exists()) {
@@ -554,7 +549,7 @@ public class IODatos {
 	}
 	
 	public static void ordenarXdinero() {
-		String nombreFichero="/home/dawb/Escritorio/AgentesTIA/src/recursos/Agentes.txt";
+		String nombreFichero="C:\\Users\\IVANGY123\\Desktop\\AgentesTIA\\src\\recursos\\Agentes.txt";
 		Scanner lCant = new Scanner(System.in);
 		System.out.println("¿A partir de que cantidad quieres ver?");
 		float cantidad=lCant.nextFloat();
@@ -612,8 +607,8 @@ public class IODatos {
 				Agente007 a007 = new Agente007(nombre, edad, direccion, salario, muertes, armas);
 				System.out.println("");
 				
-				String nombreFichero = "/home/dawb/Escritorio/AgentesTIA/src/recursos/agentes/Agente007.txt";
-				String nombreFichero2 = "/home/dawb/Escritorio/AgentesTIA/src/recursos/Agentes.txt";
+				String nombreFichero = "C:\\Users\\IVANGY123\\Desktop\\AgentesTIA\\src\\recursos\\agentes\\Agente007.txt";
+				String nombreFichero2 = "C:\\Users\\IVANGY123\\Desktop\\AgentesTIA\\src\\recursos\\Agentes.txt";
 				File f = new File(nombreFichero);
 				File f2 = new File(nombreFichero2);
 				if (f.exists()) {
@@ -660,8 +655,8 @@ public class IODatos {
 				AgenteEspia aEspia = new AgenteEspia(nombre, edad, direccion, salario, pisos);
 				System.out.println("");
 				
-				String nombreFichero = "/home/dawb/Escritorio/AgentesTIA/src/recursos/agentes/AgenteEspia.txt";
-				String nombreFichero2 = "/home/dawb/Escritorio/AgentesTIA/src/recursos/Agentes.txt";
+				String nombreFichero = "C:\\Users\\IVANGY123\\Desktop\\AgentesTIA\\src\\recursos\\agentes\\AgenteEspia.txt";
+				String nombreFichero2 = "C:\\Users\\IVANGY123\\Desktop\\AgentesTIA\\src\\recursos\\Agentes.txt";
 				File f = new File(nombreFichero);
 				File f2 = new File(nombreFichero2);
 				if (f.exists()) {
@@ -703,8 +698,8 @@ public class IODatos {
 				AgenteJefazo aJefazo = new AgenteJefazo(nombre, edad, direccion, salario, anos_mandato);
 				System.out.println("");
 				
-				String nombreFichero = "/home/dawb/Escritorio/AgentesTIA/src/recursos/agentes/AgenteJefazo.txt";
-				String nombreFichero2 = "/home/dawb/Escritorio/AgentesTIA/src/recursos/Agentes.txt";
+				String nombreFichero = "C:\\Users\\IVANGY123\\Desktop\\AgentesTIA\\src\\recursos\\agentes\\AgenteJefazo.txt";
+				String nombreFichero2 = "C:\\Users\\IVANGY123\\Desktop\\AgentesTIA\\src\\recursos\\Agentes.txt";
 				File f = new File(nombreFichero);
 				File f2 = new File(nombreFichero2);
 				if (f.exists()) {
