@@ -11,6 +11,7 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import java.io.OutputStream;
 import java.io.PrintWriter;
 import java.util.Scanner;
@@ -68,29 +69,10 @@ public class IODatos {
 	/**
 	 * lee el archivo agentes y lo muestra por pantalla
 	 */
-	public static void mosAgentes() {
-		String nombreFichero = "/home/dawb/Escritorio/AgentesTIA/src/recursos/Agentes.txt";
-		String ler = "";
-		int i = 0;
-		File f = new File(nombreFichero);
-		if (!f.exists())
-			try {
-				f.createNewFile();
-			} catch (IOException e2) {
-				// TODO Auto-generated catch block
-				e2.printStackTrace();
-			}
-
-		try (FileReader fr = new FileReader(f); Scanner leer = new Scanner(fr)) {
-
-			while (leer.hasNext()) {
-				ler = leer.nextLine().trim();
-				System.out.println(ler);
-			}
-		} catch (FileNotFoundException e) {
-			e.printStackTrace();
-		} catch (IOException e1) {
-			e1.printStackTrace();
+	public static void mosAgentes(Agentes[] vAgentes) {
+		for (Agentes a : vAgentes) {
+			if (a!=null)
+				System.out.println(a);
 		}
 		Scanner t = new Scanner(System.in);
 		System.out.println("Pulsa cualquier tecla para salir");
@@ -599,7 +581,8 @@ public class IODatos {
 	/**
 	 * Ordena y muestra por pantalla segun el dinero que nos introduzcan por pantalla
 	 */
-	public static void ordenarXdinero() {
+	public static void 
+	ordenarXdinero() {
 		String nombreFichero="/home/dawb/Escritorio/AgentesTIA/src/recursos/Agentes.txt";
 		Scanner lCant = new Scanner(System.in);
 		System.out.println("¿A partir de que cantidad quieres ver?");
@@ -658,7 +641,7 @@ public class IODatos {
 					if(vA!=null)System.out.println(vA);
 				}
 				armas=l.nextLine();
-				Agente007 a007 = new Agente007(nombre, edad, direccion, salario, muertes, armas);
+				//Agente007 a007 = new Agente007(nombre, edad, direccion, salario, muertes, armas);
 				System.out.println("");
 				
 				String nombreFichero = "/home/dawb/Escritorio/AgentesTIA/src/recursos/agentes/Agente007.txt";
@@ -669,8 +652,8 @@ public class IODatos {
 					try (FileWriter fw = new FileWriter(f, true); PrintWriter writer = new PrintWriter(fw);
 							FileWriter fw2 = new FileWriter(f2, true); PrintWriter writer2 = new PrintWriter(fw2);) {
 
-						writer.println(a007);
-						writer2.println(a007);
+					//	writer.println(a007);
+					//	writer2.println(a007);
 
 					} catch (FileNotFoundException e) {
 						// TODO Auto-generated catch block
@@ -780,5 +763,73 @@ public class IODatos {
 				} else
 					System.out.println("desencripta la informacion antes de meter un nuevo " + "AgenteJefazo");
 		}
+
+	
+	public static void guardarAgentes(Agentes[] vAgentes) {
+		
+		File f = new File("src/recursos/Agentes.dat");
+		if (!f.exists()) {
+			try {
+				f.createNewFile();
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+		
+		try (FileOutputStream fo = new FileOutputStream(f);
+			 ObjectOutputStream escribir = new ObjectOutputStream(fo)){
+			
+			//escribir.writeObject(vAgentes);
+			for (Agentes agentes : vAgentes) {
+				if (agentes != null)
+					escribir.writeObject(agentes);
+			}
+			
+			
+		} catch (FileNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
+		
+	}
+
+	public static Agentes[] cargarAgentes() {
+		Agentes[] vAgentes = new Agentes[10];
+		File f = new File("src/recursos/Agentes.dat");
+		if (!f.exists()) {
+			try {
+				f.createNewFile();
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+		
+		try (FileInputStream fo = new FileInputStream(f);
+			 ObjectInputStream leer = new ObjectInputStream(fo)){
+			int cont = 0;
+			//vAgentes = (Agentes[]) leer.readObject();
+			while (true) {
+				vAgentes[cont] = (Agentes) leer.readObject();
+				cont++;
+			}
+			
+			
+		} catch (FileNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e1) {
+			// TODO Auto-generated catch block
+			System.out.println("Carga de datos completada");
+		} catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return vAgentes;
+	}
 
 }

@@ -1,4 +1,9 @@
 package AgentesTIA;
+
+import java.util.ArrayList;
+
+import IODatos.IODatos;
+
 /**
  * 
  * @author Ivan Sanchez
@@ -9,12 +14,12 @@ public final class Agente007 extends Agentes{
 	
 
 	private int muertes;
-	private String armas;
+	private String[] armas;
 	
-	public Agente007(String nombre, int edad, String direccion, float salario, int muertes, String armas) {
+	public Agente007(String nombre, int edad, String direccion, float salario, int muertes) {
 		super(nombre, edad, direccion, salario);
 		this.muertes = muertes;
-		this.armas = armas;
+		this.armas = IODatos.leerDatos("Armas");
 	}
 
 	public int getMuertes() {
@@ -25,19 +30,12 @@ public final class Agente007 extends Agentes{
 		this.muertes = muertes;
 	}
 
-	public String getArmas() {
-		return armas;
-	}
-
-	public void setArmas(String armas) {
-		this.armas = armas;
-	}
 
 	@Override
 	public String toString() {
 		return "nombre= " + super.nombre + ", edad= " + super.edad + 
 				", dirección= " + super.direccion + ", salario= " +super.salario  
-				+ "€ , muertes=" + muertes + ", arma=" + armas;
+				+ "€ , muertes=" + muertes + ", arma=" + armas.toString();
 	}
 
 	

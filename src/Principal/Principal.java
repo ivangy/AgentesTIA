@@ -3,6 +3,7 @@ package Principal;
 import java.util.Scanner;
 
 import AgentesTIA.Agente007;
+import AgentesTIA.AgenteJefazo;
 import AgentesTIA.Agentes;
 import IODatos.IODatos;
 
@@ -51,7 +52,12 @@ public class Principal {
 	public static void main(String[] args) {
 		Scanner leer = new Scanner(System.in);
 		
-
+		/*Agentes vAgentes[] = new Agentes[10];
+		vAgentes[0] = new AgenteJefazo("Juan", 10, "Alcaniz", 100, 10);
+		vAgentes[1] = new Agente007("Juan", 10, "Alcaniz", 100, 10);*/
+		
+		Agentes[] vAgentes = IODatos.cargarAgentes();
+		
 		int opcion = 0;
 		do {
 
@@ -59,7 +65,7 @@ public class Principal {
 			opcion = PintaMenu();
 			switch (opcion) {
 			case 1:
-				IODatos.mosAgentes();
+				IODatos.mosAgentes(vAgentes);
 				break;
 			case 2:
 				IODatos.ordenarXdinero();
@@ -87,7 +93,7 @@ public class Principal {
 				break;
 			case 8:
 				System.out.println("Gracias por su atención, ¡Adiós!");
-
+				IODatos.guardarAgentes(vAgentes);
 			}
 
 		}
