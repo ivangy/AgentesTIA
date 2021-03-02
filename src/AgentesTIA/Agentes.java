@@ -1,5 +1,10 @@
 package AgentesTIA;
-
+/**
+ * 
+ * @author Ivan Sanchez
+ * @author Gil Pablo Blanco
+ *
+ */
 public class Agentes {
 	
 	protected String nombre;

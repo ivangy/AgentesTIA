@@ -19,10 +19,21 @@ import AgentesTIA.Agente007;
 import AgentesTIA.AgenteEspia;
 import AgentesTIA.AgenteJefazo;
 import AgentesTIA.Agentes;
-
+/**
+ * 
+ * @author Ivan Sanchez
+ * @author Gil Pablo Blanco
+ *
+ */
 public class IODatos {
 
+	/**
+	 * Lee los archivos txt
+	 * @param ruta es el nombre del archivo que quieres leer
+	 * @return te devuelve cada line de dentro del archivo en forma de vector
+	 */
 	public static String[] leerDatos(String ruta) {
+		
 		String nombreFichero = "/home/dawb/Escritorio/AgentesTIA/src/recursos/" + ruta;
 	
 		String ler = "";
@@ -54,6 +65,9 @@ public class IODatos {
 		return vDato;
 	}
 	
+	/**
+	 * lee el archivo agentes y lo muestra por pantalla
+	 */
 	public static void mosAgentes() {
 		String nombreFichero = "/home/dawb/Escritorio/AgentesTIA/src/recursos/Agentes.txt";
 		String ler = "";
@@ -83,6 +97,10 @@ public class IODatos {
 		String tecla=t.nextLine();
 	}
 
+	/**
+	 * Borra los archivos que le mandes la ruta
+	 * @param ruta es el nombre del archivo
+	 */
 	public static void borrarInformacion(String ruta) {
 		String nombreFichero = "/home/dawb/Escritorio/AgentesTIA/src/recursos/" + ruta;
 		File f = new File(nombreFichero);
@@ -92,6 +110,10 @@ public class IODatos {
 		}
 	}
 
+	/**
+	 * Convierte un archivo de .dat a .txt y llama a borrarInformacion para que
+	 * borre los archivos .dat
+	 */
 	public static void encriptarInformacion() {
 		String rut="/home/dawb/Escritorio/AgentesTIA/src/recursos/";
 		String armas = rut+ "Armas.txt";
@@ -275,6 +297,10 @@ public class IODatos {
 		
 	}
 	
+	/**
+	 * Convierte un archivo de .txt a .dat y llama a borrarInformacion para que
+	 * borre los archivos .txt
+	 */
 	public static void desencriptarInformacion() {
 		String rut="/home/dawb/Escritorio/AgentesTIA/src/recursos/";
 		
@@ -484,6 +510,11 @@ public class IODatos {
 
 	}
 
+	/**
+	 * Mete informacion dada como param al archivo dado por param
+	 * @param ruta es el nombre del archivo
+	 * @param dato es lo que te pasan para meter dentro del archivo
+	 */
 	public static void darAlta(String ruta, String dato) {
 		String nombreFichero = "/home/dawb/Escritorio/AgentesTIA/src/recursos/" + ruta + ".txt";
 		File f = new File(nombreFichero);
@@ -505,6 +536,10 @@ public class IODatos {
 			System.out.println("desencripta la informacion antes de meter un nuevo " + ruta);
 	}
 	
+	/**
+	 * Switch que llama primero a Pintamenu y luego con la opcion que te da 
+	 * pintamenu llama a otro metodo el cual mete informacion a un archivo
+	 */
 	public static void altaAgentes() {
 		
 			switch (pintaMenuAgen()) {
@@ -520,6 +555,10 @@ public class IODatos {
 			}
 	}
 	
+	/**
+	 * pinta un menu por pantalla
+	 * @return devuelve una opcion
+	 */
 	public static int pintaMenuAgen() {
 		Scanner lr = new Scanner(System.in);
 		int opc;
@@ -540,6 +579,10 @@ public class IODatos {
 		return opc;
 	}
 	
+	/**
+	 * Te pide por pantalla datos del piso y los junta en una variable
+	 * @return devuelve la informacion del piso que nos han dado en una variable 
+	 */
 	public static String pisos() {
 		Scanner leer = new Scanner(System.in);
 		System.out.println("Ciudad:");
@@ -553,6 +596,9 @@ public class IODatos {
 		return piso;
 	}
 	
+	/**
+	 * Ordena y muestra por pantalla segun el dinero que nos introduzcan por pantalla
+	 */
 	public static void ordenarXdinero() {
 		String nombreFichero="/home/dawb/Escritorio/AgentesTIA/src/recursos/Agentes.txt";
 		Scanner lCant = new Scanner(System.in);
@@ -586,6 +632,9 @@ public class IODatos {
 			String tecla=t.nextLine();
 	}
 	
+	/**
+	 * Añade un nuevo agente007 a el archivo general y a su archivo personal
+	 */
 	public static void meterAgente007() {
 		Scanner l = new Scanner(System.in);
 		Scanner ln = new Scanner(System.in);
@@ -635,6 +684,9 @@ public class IODatos {
 					System.out.println("desencripta la informacion antes de meter un nuevo " + "Agente007");
 		}
 
+	/**
+	 * Añade un nuevo agenteEspia a el archivo general y a su archivo personal
+	 */
 	public static void meterAgenteEspia() {
 		Scanner a = new Scanner(System.in);
 		Scanner an = new Scanner(System.in);
@@ -683,6 +735,9 @@ public class IODatos {
 					System.out.println("desencripta la informacion antes de meter un nuevo " + "AgenteEspia");
 		}
 	
+	/**
+	 * Añade un nuevo agenteJefazo a el archivo general y a su archivo personal
+	 */
 	public static void meterAgenteJefazo() {
 		Scanner l = new Scanner(System.in);
 		Scanner ln = new Scanner(System.in);

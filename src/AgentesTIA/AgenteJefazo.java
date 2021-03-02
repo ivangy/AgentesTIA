@@ -1,5 +1,10 @@
 package AgentesTIA;
-
+/**
+ * 
+ * @author Ivan Sanchez
+ * @author Gil Pablo Blanco
+ *
+ */
 public final class AgenteJefazo extends Agentes{
 	
 	private int anos_mandato;

@@ -6,6 +6,12 @@ import AgentesTIA.Agente007;
 import AgentesTIA.Agentes;
 import IODatos.IODatos;
 
+/**
+ * 
+ * @author Ivan Sanchez
+ * @author Gil Pablo Blanco
+ *
+ */
 public class Principal {
 
 	public static int PintaMenu() {

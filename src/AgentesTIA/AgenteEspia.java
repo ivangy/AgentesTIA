@@ -1,5 +1,10 @@
 package AgentesTIA;
-
+/**
+ * 
+ * @author Ivan Sanchez
+ * @author Gil Pablo Blanco
+ *
+ */
 public final class AgenteEspia extends Agentes{
 	
 	private String pisos;
