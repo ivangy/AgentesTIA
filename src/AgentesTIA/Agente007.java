@@ -19,7 +19,7 @@ public final class Agente007 extends Agentes{
 	public Agente007(String nombre, int edad, String direccion, float salario, int muertes) {
 		super(nombre, edad, direccion, salario);
 		this.muertes = muertes;
-		this.armas = IODatos.leerDatos("Armas");
+		this.armas = IODatos.leerDatos("Armas.txt");
 	}
 
 	public int getMuertes() {

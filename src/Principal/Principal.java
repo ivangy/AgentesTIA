@@ -52,9 +52,9 @@ public class Principal {
 	public static void main(String[] args) {
 		Scanner leer = new Scanner(System.in);
 		
-		/*Agentes vAgentes[] = new Agentes[10];
-		vAgentes[0] = new AgenteJefazo("Juan", 10, "Alcaniz", 100, 10);
-		vAgentes[1] = new Agente007("Juan", 10, "Alcaniz", 100, 10);*/
+		//Agentes vAgentes[] = new Agentes[10];
+		//vAgentes[0] = new AgenteJefazo("Juan", 10, "Alcaniz", 100, 10);
+		//vAgentes[1] = new Agente007("Juan", 10, "Alcaniz", 100, 10);
 		
 		Agentes[] vAgentes = IODatos.cargarAgentes();
 		

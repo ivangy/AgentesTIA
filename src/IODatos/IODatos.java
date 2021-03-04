@@ -97,33 +97,17 @@ public class IODatos {
 	 * borre los archivos .dat
 	 */
 	public static void encriptarInformacion() {
-		String rut="/home/dawb/Escritorio/AgentesTIA/src/recursos/";
+		String rut="src/recursos/";
 		String armas = rut+ "Armas.txt";
 		String armasEn = rut+ "Armas.dat";
 		String pisos = rut+ "Pisos.txt";
 		String pisosEn = rut+ "Pisos.dat";
-		String agentes = rut+ "Agentes.txt";
-		String agentesEn = rut+ "Agentes.dat";
-		String agente007 = rut+ "agentes/Agente007.txt";
-		String agente007En = rut+ "agentes/Agente007.dat";
-		String agenteEspia = rut+ "agentes/AgenteEspia.txt";
-		String agenteEspiaEn = rut+ "agentes/AgenteEspia.dat";
-		String agenteJefazo = rut+ "agentes/AgenteJefazo.txt";
-		String agenteJefazoEn = rut+ "agentes/AgenteJefazo.dat";
 
 		
 		File armasOrigin = new File(armas);
 		File armasDestination = new File(armasEn);
 		File pisosOrigin = new File(pisos);
 		File pisosDestination = new File(pisosEn);
-		File agentesOrigin = new File(agentes);
-		File agentesDestination = new File(agentesEn);
-		File agente007Origin = new File(agente007);
-		File agente007Destination = new File(agente007En);
-		File agenteEspiaOrigin = new File(agenteEspia);
-		File agenteEspiaDestination = new File(agenteEspiaEn);
-		File agenteJefazoOrigin = new File(agenteJefazo);
-		File agenteJefazoDestination = new File(agenteJefazoEn);
 
 		//Encriptar armas.txt
 		if (armasOrigin.exists()) {
@@ -174,109 +158,6 @@ public class IODatos {
 			System.out.println("Ya está encriptado el archivo Pisos");
 		
 		
-		
-		//Encriptar agentes.txt
-		if (agentesOrigin.exists()) {
-			String[] v1 = leerDatos("Agentes.txt");
-			if (agentesDestination.exists()) {
-				agentesDestination.delete();
-			}
-			try (FileOutputStream fo = new FileOutputStream(agentesDestination);
-					DataOutputStream escribir = new DataOutputStream(fo)) {
-
-				for (String s : v1) {
-					if (s != null) {
-						escribir.writeUTF(s);
-					}
-
-				}
-				borrarInformacion("Agentes.txt");
-
-			} catch (IOException ioe) {
-				ioe.printStackTrace();
-			}
-		} else
-			System.out.println("Ya está encriptado el archivo Agentes");
-		
-		
-		// Encriptar agente007.txt
-		if (agente007Origin.exists()) {
-			String[] v1 = leerDatos("agentes/Agente007.txt");
-			if (agente007Destination.exists()) {
-				agente007Destination.delete();
-			}
-			try (FileOutputStream fo = new FileOutputStream(agente007Destination);
-					DataOutputStream escribir = new DataOutputStream(fo)) {
-
-				for (String s : v1) {
-					if (s != null) {
-						escribir.writeUTF(s);
-					}
-
-				}
-				borrarInformacion("agentes/Agente007.txt");
-
-			} catch (IOException ioe) {
-				ioe.printStackTrace();
-			}
-		} else
-			System.out.println("Ya está encriptado el archivo Agente007");
-				
-		
-		
-		
-			// Encriptar agenteEspia.txt
-			if (agenteEspiaOrigin.exists()) {
-				String[] v1 = leerDatos("agentes/AgenteEspia.txt");
-				if (agenteEspiaDestination.exists()) {
-					agenteEspiaDestination.delete();
-				}
-				try (FileOutputStream fo = new FileOutputStream(agenteEspiaDestination);
-						DataOutputStream escribir = new DataOutputStream(fo)) {
-
-					for (String s : v1) {
-						if (s != null) {
-							escribir.writeUTF(s);
-						}
-
-					}
-					borrarInformacion("agentes/AgenteEspia.txt");
-
-				} catch (IOException ioe) {
-					ioe.printStackTrace();
-				}
-			} else
-				System.out.println("Ya está encriptado el archivo AgenteEspia");
-
-			
-			// Encriptar agenteJefazo.txt
-			if (agenteJefazoOrigin.exists()) {
-				String[] v1 = leerDatos("agentes/AgenteJefazo.txt");
-				if (agenteJefazoDestination.exists()) {
-					agenteJefazoDestination.delete();
-				}
-				try (FileOutputStream fo = new FileOutputStream(agenteJefazoDestination);
-						DataOutputStream escribir = new DataOutputStream(fo)) {
-
-					for (String s : v1) {
-						if (s != null) {
-							escribir.writeUTF(s);
-						}
-
-					}
-					borrarInformacion("agentes/AgenteJefazo.txt");
-
-				} catch (IOException ioe) {
-					ioe.printStackTrace();
-				}
-			} else
-				System.out.println("Ya está encriptado el archivo AgenteJefazo");
-		
-		
-		
-		
-		
-		
 	}
 	
 	/**
@@ -290,30 +171,11 @@ public class IODatos {
 		String pisos = rut+ "Pisos.txt";
 		String armasEn =  rut+ "Armas.dat";
 		String pisosEn =  rut+ "Pisos.dat";
-		String agentes = rut+ "Agentes.txt";
-		String agentesEn = rut+ "Agentes.dat";
-		String agente007 = rut+ "agentes/Agente007.txt";
-		String agente007En = rut+ "agentes/Agente007.dat";
-		String agenteEspia = rut+ "agentes/AgenteEspia.txt";
-		String agenteEspiaEn = rut+ "agentes/AgenteEspia.dat";
-		String agenteJefazo = rut+ "agentes/AgenteJefazo.txt";
-		String agenteJefazoEn = rut+ "agentes/AgenteJefazo.dat";
-
+	
 		File fArmas = new File(armas);
 		File fArmasEn = new File(armasEn);
 		File fPisos = new File(pisos);
 		File fPisosEn = new File(pisosEn);
-		File fAgentes = new File(agentes);
-		File fAgentesEn = new File(agentesEn);
-		File fAgente007 = new File(agente007);
-		File fAgente007En = new File(agente007En);
-		File fAgenteEspia = new File(agenteEspia);
-		File fAgenteEspiaEn = new File(agenteEspiaEn);
-		File fAgenteJefazo = new File(agenteJefazo);
-		File fAgenteJefazoEn = new File(agenteJefazoEn);
-		
-		
-		
 		
 		String usu = "", pass = "", fin = "";
 		Scanner ler = new Scanner(System.in);
@@ -375,112 +237,6 @@ public class IODatos {
 						borrarInformacion("Pisos.dat");
 					} else
 						System.out.println("Ya está desencriptado el archivo Pisos");
-					
-					
-					
-					//desencripta Agentes.dat
-					if (fAgentesEn.exists()) {
-						try (FileInputStream fi = new FileInputStream(fAgentesEn);
-								DataInputStream leer = new DataInputStream(fi);
-								FileWriter fw = new FileWriter(fAgentes);
-								PrintWriter writer = new PrintWriter(fw);) {
-
-							fAgentes.createNewFile();
-
-							while (true) {
-								writer.println(leer.readUTF());
-							}
-
-						} catch (FileNotFoundException e) {
-							// TODO Auto-generated catch block
-							e.printStackTrace();
-						} catch (IOException e) {
-							// TODO Auto-generated catch block
-							// e.printStackTrace();
-						}
-						borrarInformacion("Agentes.dat");
-					} else
-						System.out.println("Ya está desencriptado el archivo Agentes");
-					
-					
-					
-					//desencripta agente007.dat
-					if (fAgente007En.exists()) {
-						try (FileInputStream fi = new FileInputStream(fAgente007En);
-								DataInputStream leer = new DataInputStream(fi);
-								FileWriter fw = new FileWriter(fAgente007);
-								PrintWriter writer = new PrintWriter(fw);) {
-
-							fAgente007.createNewFile();
-
-							while (true) {
-								writer.println(leer.readUTF());
-							}
-
-						} catch (FileNotFoundException e) {
-							// TODO Auto-generated catch block
-							e.printStackTrace();
-						} catch (IOException e) {
-							// TODO Auto-generated catch block
-							// e.printStackTrace();
-						}
-						borrarInformacion("agentes/Agente007.dat");
-					} else
-						System.out.println("Ya está desencriptado el archivo Agente007");
-					
-					
-					
-					//desencripta AgenteEspia.dat
-					if (fAgenteEspiaEn.exists()) {
-						try (FileInputStream fi = new FileInputStream(fAgenteEspiaEn);
-								DataInputStream leer = new DataInputStream(fi);
-								FileWriter fw = new FileWriter(fAgenteEspia);
-								PrintWriter writer = new PrintWriter(fw);) {
-
-							fAgenteEspia.createNewFile();
-
-							while (true) {
-								writer.println(leer.readUTF());
-							}
-
-						} catch (FileNotFoundException e) {
-							// TODO Auto-generated catch block
-							e.printStackTrace();
-						} catch (IOException e) {
-							// TODO Auto-generated catch block
-							// e.printStackTrace();
-						}
-						borrarInformacion("agentes/AgenteEspia.dat");
-					} else
-						System.out.println("Ya está desencriptado el archivo AgenteEspia");
-					
-					
-					
-					//desencripta AgenteJefazo.dat
-					if (fAgenteJefazoEn.exists()) {
-						try (FileInputStream fi = new FileInputStream(fAgenteJefazoEn);
-								DataInputStream leer = new DataInputStream(fi);
-								FileWriter fw = new FileWriter(fAgenteJefazo);
-								PrintWriter writer = new PrintWriter(fw);) {
-
-							fAgenteJefazo.createNewFile();
-
-							while (true) {
-								writer.println(leer.readUTF());
-							}
-
-						} catch (FileNotFoundException e) {
-							// TODO Auto-generated catch block
-							e.printStackTrace();
-						} catch (IOException e) {
-							// TODO Auto-generated catch block
-							// e.printStackTrace();
-						}
-						borrarInformacion("agentes/AgenteJefazo.dat");
-					} else
-						System.out.println("Ya está desencriptado el archivo AgenteJefazo");
-					
-					
 					
 					fin = "fin";
 				} else
@@ -779,11 +535,11 @@ public class IODatos {
 		try (FileOutputStream fo = new FileOutputStream(f);
 			 ObjectOutputStream escribir = new ObjectOutputStream(fo)){
 			
-			//escribir.writeObject(vAgentes);
-			for (Agentes agentes : vAgentes) {
+			escribir.writeObject(vAgentes);
+			/*for (Agentes agentes : vAgentes) {
 				if (agentes != null)
 					escribir.writeObject(agentes);
-			}
+			}*/
 			
 			
 		} catch (FileNotFoundException e) {
@@ -796,6 +552,7 @@ public class IODatos {
 		
 	}
 
+	//hacer pruebas
 	public static Agentes[] cargarAgentes() {
 		Agentes[] vAgentes = new Agentes[10];
 		File f = new File("src/recursos/Agentes.dat");
@@ -811,11 +568,11 @@ public class IODatos {
 		try (FileInputStream fo = new FileInputStream(f);
 			 ObjectInputStream leer = new ObjectInputStream(fo)){
 			int cont = 0;
-			//vAgentes = (Agentes[]) leer.readObject();
-			while (true) {
+			vAgentes = (Agentes[]) leer.readObject();
+			/*while (true) {
 				vAgentes[cont] = (Agentes) leer.readObject();
 				cont++;
-			}
+			}*/
 			
 			
 		} catch (FileNotFoundException e) {
