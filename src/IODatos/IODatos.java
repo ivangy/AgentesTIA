@@ -581,8 +581,7 @@ public class IODatos {
 	/**
 	 * Ordena y muestra por pantalla segun el dinero que nos introduzcan por pantalla
 	 */
-	public static void 
-	ordenarXdinero() {
+	public static void ordenarXdinero() {
 		String nombreFichero="/home/dawb/Escritorio/AgentesTIA/src/recursos/Agentes.txt";
 		Scanner lCant = new Scanner(System.in);
 		System.out.println("¿A partir de que cantidad quieres ver?");
