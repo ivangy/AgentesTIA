@@ -1,4 +1,9 @@
 package AgentesTIA;
+
+import java.util.ArrayList;
+
+import IODatos.IODatos;
+
 /**
  * 
  * @author Ivan Sanchez
@@ -25,19 +30,12 @@ public final class Agente007 extends Agentes{
 		this.muertes = muertes;
 	}
 
-	public String getArmas() {
-		return armas;
-	}
-
-	public void setArmas(String armas) {
-		this.armas = armas;
-	}
 
 	@Override
 	public String toString() {
 		return "nombre= " + super.nombre + ", edad= " + super.edad + 
 				", dirección= " + super.direccion + ", salario= " +super.salario  
-				+ "€ , muertes=" + muertes + ", arma=" + armas;
+				+ "€ , muertes=" + muertes + ", armas= " + this.armas;
 	}
 
 	

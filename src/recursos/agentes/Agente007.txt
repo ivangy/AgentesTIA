@@ -1,1 +1,0 @@
-nombre= ivan, edad= 18, dirección= casa, salario= 10.0€ , muertes=2, arma=Rifle

@@ -1,1 +1,0 @@
-nombre= juan, edad= 20, dirección= casa2, salario= 10000.0€ , anos_mandato= 4

@@ -1,3 +1,0 @@
-nombre= ivan, edad= 18, dirección= casa, salario= 10.0€ , muertes=2, arma=Rifle
-nombre= pepe, edad= 19, dirección= casa1, salario= 1000.0€ , piso= Alcañiz, Paseo Andrade número 2
-nombre= juan, edad= 20, dirección= casa2, salario= 10000.0€ , anos_mandato= 4

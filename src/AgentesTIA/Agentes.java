@@ -1,11 +1,14 @@
 package AgentesTIA;
+
+import java.io.Serializable;
+
 /**
  * 
  * @author Ivan Sanchez
  * @author Gil Pablo Blanco
  *
  */
-public class Agentes {
+public class Agentes implements Serializable{
 	
 	protected String nombre;
 	protected int edad;
