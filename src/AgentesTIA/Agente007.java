@@ -14,12 +14,12 @@ public final class Agente007 extends Agentes{
 	
 
 	private int muertes;
-	private String[] armas;
+	private String armas;
 	
-	public Agente007(String nombre, int edad, String direccion, float salario, int muertes) {
+	public Agente007(String nombre, int edad, String direccion, float salario, int muertes, String armas) {
 		super(nombre, edad, direccion, salario);
 		this.muertes = muertes;
-		this.armas = IODatos.leerDatos("Armas.txt");
+		this.armas = armas;
 	}
 
 	public int getMuertes() {
@@ -35,7 +35,7 @@ public final class Agente007 extends Agentes{
 	public String toString() {
 		return "nombre= " + super.nombre + ", edad= " + super.edad + 
 				", dirección= " + super.direccion + ", salario= " +super.salario  
-				+ "€ , muertes=" + muertes + ", arma=" + armas.toString();
+				+ "€ , muertes=" + muertes + ", armas= " + this.armas;
 	}
 
 	
