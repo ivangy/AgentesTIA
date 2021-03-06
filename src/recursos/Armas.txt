@@ -1,3 +1,4 @@
 Rifle
 Pistola
 franco
+Escopeta

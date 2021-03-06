@@ -85,8 +85,8 @@ public class IODatos {
 	 * Borra los archivos que le mandes la ruta
 	 * @param ruta es el nombre del archivo
 	 */
-	public static void borrarInformacion(String ruta) {
-		String nombreFichero = "/home/dawb/Escritorio/AgentesTIA/src/recursos/" + ruta;
+	public static void borrarInformacion(String ruta, String dir) {
+		String nombreFichero = dir + ruta;
 		File f = new File(nombreFichero);
 
 		if (f.exists()) {
@@ -127,7 +127,7 @@ public class IODatos {
 
 				}
 
-				borrarInformacion("Armas.txt");
+				borrarInformacion("Armas.txt", dir);
 
 			} catch (IOException ioe) {
 				ioe.printStackTrace();
@@ -151,7 +151,7 @@ public class IODatos {
 					}
 
 				}
-				borrarInformacion("Pisos.txt");
+				borrarInformacion("Pisos.txt", dir);
 
 			} catch (IOException ioe) {
 				ioe.printStackTrace();
@@ -211,7 +211,7 @@ public class IODatos {
 							// TODO Auto-generated catch block
 							// e.printStackTrace();
 						}
-						borrarInformacion("Armas.dat");
+						borrarInformacion("Armas.dat", dir);
 					} else
 						System.out.println("Ya está desencriptado el archivo Armas");
 
@@ -236,7 +236,7 @@ public class IODatos {
 							// TODO Auto-generated catch block
 							// e.printStackTrace();
 						}
-						borrarInformacion("Pisos.dat");
+						borrarInformacion("Pisos.dat", dir);
 					} else
 						System.out.println("Ya está desencriptado el archivo Pisos");
 					
