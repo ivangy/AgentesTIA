@@ -1,4 +1,3 @@
 Rifle
 Pistola
-franco
 Escopeta

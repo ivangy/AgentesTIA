@@ -14,6 +14,7 @@ import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.io.OutputStream;
 import java.io.PrintWriter;
+import java.util.ArrayList;
 import java.util.Scanner;
 
 import AgentesTIA.Agente007;
@@ -27,20 +28,24 @@ import AgentesTIA.Agentes;
  *
  */
 public class IODatos {
-
-	
+	/**
+	 * Antes de mirar el codigo ten en cuenta esta variable y este vector:
+	 * dir: es una direccion que depende de el sistema operativo
+	 * vAgentes: dinamico con la informacion de los agentes
+	 */
 	
 	/**
 	 * Lee los archivos txt
 	 * @param ruta es el nombre del archivo que quieres leer
 	 * @return te devuelve cada line de dentro del archivo en forma de vector
 	 */
-	public static String[] leerDatos(String ruta, String dir) {
+	public static ArrayList<String> leerDatos(String ruta, String dir) {
 		
 		String nombreFichero = dir + ruta;
 	
 		String ler = "";
-		String vDato[] = new String[10];
+		ArrayList<String> vDato= new ArrayList<>();
+		//String vDato[] = new String[10];
 		int i = 0;
 		File f = new File(nombreFichero);
 		if (!f.exists())
@@ -56,7 +61,7 @@ public class IODatos {
 			while (leer.hasNext()) {
 				ler = leer.nextLine().trim();
 
-				vDato[i] = ler;
+				vDato.add(ler);
 				i++;
 			}
 		} catch (FileNotFoundException e) {
@@ -69,9 +74,9 @@ public class IODatos {
 	}
 	
 	/**
-	 * lee el vector vAgentes y lo muestra por pantalla
+	 * lee el vector dinamicos vAgentes y lo muestra por pantalla
 	 */
-	public static void mosAgentes(Agentes[] vAgentes) {
+	public static void mosAgentes(ArrayList<Agentes> vAgentes) {
 		for (Agentes a : vAgentes) {
 			if (a!=null)
 				System.out.println(a);
@@ -113,7 +118,7 @@ public class IODatos {
 
 		//Encriptar armas.txt
 		if (armasOrigin.exists()) {
-			String[] v1 = leerDatos("Armas.txt", dir);
+			ArrayList<String> v1 = leerDatos("Armas.txt", dir);
 			if (armasDestination.exists()) {
 				armasDestination.delete();
 			}
@@ -138,7 +143,7 @@ public class IODatos {
 		
 		//Encriptar pisos.txt
 		if (pisosOrigin.exists()) {
-			String[] v1 = leerDatos("Pisos.txt", dir);
+			ArrayList<String> v1 = leerDatos("Pisos.txt", dir);
 			if (pisosDestination.exists()) {
 				pisosDestination.delete();
 			}
@@ -251,7 +256,7 @@ public class IODatos {
 	}
 
 	/**
-	 * Mete informacion dada como param al archivo dado por param
+	 * Mete informacion dada como parametro al archivo .txt dado por parametro
 	 * @param ruta es el nombre del archivo
 	 * @param dato es lo que te pasan para meter dentro del archivo
 	 */
@@ -280,7 +285,7 @@ public class IODatos {
 	 * Switch que llama primero a Pintamenu y luego con la opcion que te da 
 	 * pintamenu llama a otro metodo el cual mete informacion a un archivo
 	 */
-	public static void altaAgentes(Agentes[] vAgentes, String dir) {
+	public static void altaAgentes(ArrayList<Agentes> vAgentes, String dir) {
 		
 			switch (pintaMenuAgen()) {
 			case 1:
@@ -339,7 +344,7 @@ public class IODatos {
 	/**
 	 * muestra por pantalla segun el dinero que nos introduzcan por pantalla
 	 */
-	public static void ordenarXdinero(Agentes[] vAgentes) {
+	public static void ordenarXdinero(ArrayList<Agentes> vAgentes) {
 		Scanner leer= new Scanner(System.in);
 		int num=0;
 		System.out.println("Dime a partir de que cantidad te muestro los agentes");
@@ -349,10 +354,8 @@ public class IODatos {
 			System.out.println("ERROR NO ES UN NUMERO VALIDO");
 		}
 		for (Agentes a : vAgentes) {
-			if (a!=null) {
 				if(a.getSalario()>=num) {
 				System.out.println(a);
-				}
 			}
 		}
 		Scanner t = new Scanner(System.in);
@@ -361,9 +364,9 @@ public class IODatos {
 	}
 	
 	/**
-	 * Añade un nuevo agente007 a el archivo general y a su archivo personal
+	 * Añade un nuevo agente007 
 	 */
-	public static void meterAgente007(Agentes[] vAgentes, String dir) {
+	public static void meterAgente007(ArrayList<Agentes> vAgentes, String dir) {
 		Scanner l = new Scanner(System.in);
 		Scanner ln = new Scanner(System.in);
 		String nombre,direccion,armas;
@@ -381,29 +384,21 @@ public class IODatos {
 				System.out.println("Dime ha cuantos a  matado");
 				muertes=ln.nextInt();
 				
-				String [] vArmas= leerDatos("Armas.txt", dir);
+				/*ArrayList<String> vArmas= leerDatos("Armas.txt", dir);
 				for (String vA : vArmas) {
 					if(vA!=null)System.out.println(vA);
 				}
 				System.out.println("Dime su arma (Debe poner una o mas de las armas mostradas arriba)");
-				armas=l.nextLine();
+				armas=l.nextLine();*/
 				
-				for (int i = 0; i < vAgentes.length; i++) {
-					if (vAgentes[i]==null) {
-						vAgentes[i] = new Agente007(nombre, edad, direccion, salario, muertes, armas);
-						break;
-					}
-				}
-					
-				
-				
+						vAgentes.add(new Agente007(nombre, edad, direccion, salario, muertes));
 				
 		}
 
 	/**
-	 * Añade un nuevo agenteEspia a el archivo general y a su archivo personal
+	 * Añade un nuevo agenteEspia
 	 */
-	public static void meterAgenteEspia(Agentes[] vAgentes, String dir) {
+	public static void meterAgenteEspia(ArrayList<Agentes> vAgentes, String dir) {
 		Scanner a = new Scanner(System.in);
 		Scanner an = new Scanner(System.in);
 		String nombre,direccion,pisos;
@@ -419,27 +414,22 @@ public class IODatos {
 				System.out.println("Dime su salario");
 				salario=an.nextFloat();
 				
-				String [] vPisos= leerDatos("Pisos.txt",dir);
+				/*ArrayList<String> vPisos= leerDatos("Pisos.txt",dir);
 				for (String vP : vPisos) {
 					if(vP!=null)System.out.println(vP);
 				}
 				System.out.println("Dime su piso (Debe poner uno de los pisos mostrados arriba)");
-				pisos=a.nextLine();
-				
-				for (int i = 0; i < vAgentes.length; i++) {
-					if (vAgentes[i]==null) {
-						vAgentes[i] = new AgenteEspia(nombre, edad, direccion, salario, pisos);
-						break;
-					}
-				}
-				
+				pisos=a.nextLine();*/
+	
+						vAgentes.add(new AgenteEspia(nombre, edad, direccion, salario));
+					
 				
 		}
 	
 	/**
-	 * Añade un nuevo agenteJefazo a el archivo general y a su archivo personal
+	 * Añade un nuevo agenteJefazo
 	 */
-	public static void meterAgenteJefazo(Agentes[] vAgentes) {
+	public static void meterAgenteJefazo(ArrayList<Agentes> vAgentes) {
 		Scanner l = new Scanner(System.in);
 		Scanner ln = new Scanner(System.in);
 		String nombre,direccion;
@@ -457,17 +447,14 @@ public class IODatos {
 				System.out.println("Dime sus años de mandato");
 				anos_mandato=ln.nextInt();
 				
-				for (int i = 0; i < vAgentes.length; i++) {
-					if (vAgentes[i]==null) {
-						vAgentes[i] = new AgenteJefazo(nombre, edad, direccion, salario, anos_mandato);
-						break;
-					}
-				}
-				
+						vAgentes.add(new AgenteJefazo(nombre, edad, direccion, salario, anos_mandato));
 		}
 
-	
-	public static void guardarAgentes(Agentes[] vAgentes, String dir) {
+	/**
+	 * Guarda en un archivo .dat el vector dinamico dado por parametro
+	 * @param vAgentes vector dinamico con la informacion de los agentes
+	 */
+	public static void guardarAgentes(ArrayList<Agentes> vAgentes, String dir) {
 		
 		File f = new File( dir + "Agentes.dat");
 		if (!f.exists()) {
@@ -481,8 +468,10 @@ public class IODatos {
 		
 		try (FileOutputStream fo = new FileOutputStream(f);
 			 ObjectOutputStream escribir = new ObjectOutputStream(fo)){
+			for (Agentes a : vAgentes) {
+				escribir.writeObject(a);
+			}
 			
-			escribir.writeObject(vAgentes);
 			/*for (Agentes agentes : vAgentes) {
 				if (agentes != null)
 					escribir.writeObject(agentes);
@@ -500,10 +489,14 @@ public class IODatos {
 	}
 
 	//hacer pruebas
-	
-	public static Agentes[] cargarAgentes(String dir) {
-		Agentes[] vAgentes = new Agentes[10];
+	/**
+	 * lee el archivo .dat de agentes y lo convierte en un vector dinamico
+	 * @return vAgentes contiene los agentes leidos del archivo .dat
+	 */
+	public static ArrayList<Agentes> cargarAgentes(String dir) {
 		File f = new File(dir + "Agentes.dat");
+		ArrayList<Agentes> vAgentes = new ArrayList<>();
+		
 		if (!f.exists()) {
 			try {
 				f.createNewFile();
@@ -515,8 +508,12 @@ public class IODatos {
 		
 		try (FileInputStream fo = new FileInputStream(f);
 			 ObjectInputStream leer = new ObjectInputStream(fo)){
-			int cont = 0;
-			vAgentes = (Agentes[]) leer.readObject();
+			
+			while (true) {
+				vAgentes.add((Agentes) leer.readObject());	
+			}
+			
+			//vAgentes = (Agentes[]) leer.readObject();
 			/*while (true) {
 				vAgentes[cont] = (Agentes) leer.readObject();
 				cont++;
@@ -536,4 +533,30 @@ public class IODatos {
 		return vAgentes;
 	}
 
+	/**
+	 * Asigna la direccion de todos los archivos que se van a usar en el programa
+	 * @return dir es una direccion que depende de el sistema operativo
+	 */
+	public static String so() {
+		Scanner l = new Scanner(System.in);
+		int num=0;
+		String dir="";
+		do {
+		System.out.println("Estas en Windows(1) o Linux(2)");
+		num=l.nextInt();
+		if(num==1||num==2){
+		switch (num) {
+		case 1:
+			dir="src\\recursos\\";
+			break;
+			
+		case 2:
+			dir="src/recursos/";
+			break;
+		}
+		}else System.out.println("ERROR");
+		} while (num!=1);
+		
+		return dir;
+	}
 }
