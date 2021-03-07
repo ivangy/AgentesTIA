@@ -1,5 +1,6 @@
 package Principal;
 
+import java.util.ArrayList;
 import java.util.Scanner;
 
 import AgentesTIA.Agente007;
@@ -49,38 +50,29 @@ public class Principal {
 
 	}
 	
-	private static String winlin() {
-		Scanner l = new Scanner(System.in);
-		int num=0;
-		String dir="";
-		do {
-		System.out.println("Estas en Windows(1) o Linux(2)");
-		num=l.nextInt();
-		if(num==1||num==2){
-		switch (num) {
-		case 1:
-			dir="src\\recursos\\";
-			break;
-			
-		case 2:
-			dir="src/recursos/";
-			break;
-		}
-		}else System.out.println("ERROR");
-		} while (num!=1);
-		
-		return dir;
-	}
 
+
+	
 	public static void main(String[] args) {
 		Scanner leer = new Scanner(System.in);
-		String dir=winlin();
+		Scanner ler = new Scanner(System.in);
+		String usu,pass,fin="";
+		do {
+		System.out.println("Dime el usuario");
+		usu = ler.nextLine();
+		if (usu.equals("admin")) {
+			System.out.println("Dime la contraseña");
+			pass = ler.nextLine();
+			if (pass.equals("admin")) {
+		
+		String dir=IODatos.so();
 		
 		//Agentes vAgentes[] = new Agentes[10];
 		//vAgentes[0] = new AgenteJefazo("Juan", 10, "Alcaniz", 100, 10);
 		//vAgentes[1] = new Agente007("Juan", 10, "Alcaniz", 100, 10);
 		
-		Agentes[] vAgentes = IODatos.cargarAgentes(dir);
+		ArrayList<Agentes> vAgentes = IODatos.cargarAgentes(dir);
+		//Agentes[] vAgentes = IODatos.cargarAgentes(dir);
 		
 		int opcion = 0;
 		do {
@@ -121,7 +113,13 @@ public class Principal {
 
 		}
 		} while (opcion!=8);
+		fin = "fin";
+			} else
+				System.out.println("ERROR");
+		} else
+			System.out.println("ERROR");
 
+	} while (fin != "fin");
 	}
 
 

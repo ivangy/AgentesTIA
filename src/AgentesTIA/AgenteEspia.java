@@ -1,4 +1,9 @@
 package AgentesTIA;
+
+import java.util.ArrayList;
+
+import IODatos.IODatos;
+
 /**
  * 
  * @author Ivan Sanchez
@@ -7,20 +12,29 @@ package AgentesTIA;
  */
 public final class AgenteEspia extends Agentes{
 	
-	private String pisos;
+	private ArrayList<String>pisos=new ArrayList<String>();
 
-	public AgenteEspia(String nombre, int edad, String direccion, float salario, String pisos) {
+	public AgenteEspia(String nombre, int edad, String direccion, float salario) {
 		super(nombre, edad, direccion, salario);
-		this.pisos = pisos;
+		this.pisos = IODatos.leerDatos("Pisos.txt", IODatos.so());
 	}
 
-	public String getPisos() {
+	
+	
+
+	public ArrayList<String> getPisos() {
 		return pisos;
 	}
 
-	public void setPisos(String pisos) {
+
+
+
+	public void setPisos(ArrayList<String> pisos) {
 		this.pisos = pisos;
 	}
+
+
+
 
 	@Override
 	public String toString() {
