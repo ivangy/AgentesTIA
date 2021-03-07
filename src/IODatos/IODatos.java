@@ -510,7 +510,7 @@ public class IODatos {
 			 ObjectInputStream leer = new ObjectInputStream(fo)){
 			
 			while (true) {
-				vAgentes.add((Agentes) leer.readObject());	
+				vAgentes.add((Agentes) leer.readObject());
 			}
 			
 			//vAgentes = (Agentes[]) leer.readObject();
