@@ -15,8 +15,16 @@ public final class Agente007 extends Agentes{
 	
 
 	private int muertes;
-	private ArrayList<String>armas=new ArrayList<String>();
+	private ArrayList<String>armas;
 
+	/**
+	 * 
+	 * @param nombre
+	 * @param edad
+	 * @param direccion
+	 * @param salario
+	 * @param muertes
+	 */
 	public Agente007(String nombre, int edad, String direccion, float salario, int muertes) {
 		super(nombre, edad, direccion, salario);
 		this.muertes = muertes;
@@ -25,14 +33,20 @@ public final class Agente007 extends Agentes{
 
 
 
-
+/**
+ * 
+ * @return Numero de muertoes como numero int
+ */
 	public int getMuertes() {
 		return muertes;
 	}
 
 
 
-
+/**
+ * 
+ * @param muertes
+ */
 	public void setMuertes(int muertes) {
 		this.muertes = muertes;
 	}
@@ -56,9 +70,7 @@ public final class Agente007 extends Agentes{
 
 	@Override
 	public String toString() {
-		return "nombre= " + super.nombre + ", edad= " + super.edad + 
-				", dirección= " + super.direccion + ", salario= " +super.salario  
-				+ "€ , muertes=" + muertes + ", armas= " + this.armas;
+		return super.toString() + ", muertes=" + muertes + ", armas= " + this.armas;
 	}
 
 	

@@ -18,7 +18,7 @@ public class Principal {
 
 	public static int PintaMenu() {
 
-		int opc;
+		int opc=0;
 
 		Scanner leer = new Scanner(System.in);
 
@@ -39,7 +39,12 @@ public class Principal {
 
 			System.out.println("Dime una opción:");
 
-			opc = leer.nextInt();
+			try {
+				opc = leer.nextInt();
+			} catch (Exception e) {
+				// TODO: handle exception
+			}
+			
 
 			if ((opc < 1) || (opc > 8)) {
 				System.out.println("Esta opcion es invalida, vuelve a intertarlo");
