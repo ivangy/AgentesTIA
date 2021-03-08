@@ -6,15 +6,16 @@ import java.io.Serializable;
  * 
  * @author Ivan Sanchez
  * @author Gil Pablo Blanco
- *
+ * @version 2.0
+ * 
  */
-public class Agentes implements Serializable{
-	
+public class Agentes implements Serializable {
+
 	protected String nombre;
 	protected int edad;
 	protected String direccion;
 	protected float salario;
-	
+
 	public Agentes(String nombre, int edad, String direccion, float salario) {
 		this.nombre = nombre;
 		this.edad = edad;
@@ -56,12 +57,7 @@ public class Agentes implements Serializable{
 
 	@Override
 	public String toString() {
-		return "Agentes [nombre=" + nombre + ", edad=" + edad + ", direccion=" + direccion + ", salario=" + salario
-				+ "]";
+		return "nombre= " + nombre + ", edad= " + edad + ", dirección= " + direccion + ", salario= " + salario + "€ ";
 	}
-	
-	
-	
-	
-	
+
 }

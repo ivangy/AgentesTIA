@@ -26,7 +26,7 @@ public class cargarAgentes_test {
  * @return vAprueba es un vector de agentes 
  */
 	public ArrayList<Agentes> esperado() {
-	File f = new File("src\\recursos\\" + "Agentes.dat");
+	File f = new File("recursos/" + "Agentes.dat");
 	ArrayList<Agentes> vAprueba = new ArrayList<>();
 	try (FileInputStream fo = new FileInputStream(f);
 			 ObjectInputStream leer = new ObjectInputStream(fo)){
@@ -39,7 +39,7 @@ public class cargarAgentes_test {
 		e.printStackTrace();
 	} catch (IOException e) {
 		// TODO Auto-generated catch block
-		e.printStackTrace();
+		//e.printStackTrace();
 	} catch (ClassNotFoundException e) {
 		// TODO Auto-generated catch block
 		e.printStackTrace();
@@ -56,7 +56,7 @@ public class cargarAgentes_test {
 	 */
 	@Test
 	public void test() {
-		ArrayList<Agentes> resultado= IODatos.cargarAgentes("src\\recursos\\");
+		ArrayList<Agentes> resultado= IODatos.cargarAgentes("recursos/");
 		ArrayList<Agentes> esperado= esperado();
 		int num = resultado.size();
 		Agentes[] vEsperado=new Agentes[num];
@@ -77,9 +77,9 @@ public class cargarAgentes_test {
 			if(vResultado[l]!=null) {
 				Agentes resul=vResultado[l];
 				Agentes espe=vResultado[l];
-				if(resul==espe) {
-					assertEquals(resul, espe);
-				}
+				
+				assertEquals(resul, espe);
+				
 			}
 		}
 		

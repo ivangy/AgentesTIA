@@ -24,9 +24,13 @@ public final class AgenteJefazo extends Agentes{
 
 	@Override
 	public String toString() {
-		return "nombre= " + super.nombre + ", edad= " + super.edad + 
-				", dirección= " + super.direccion + ", salario= " +super.salario  
-				+ "€ , anos_mandato= " + anos_mandato;
+		return 	"********************************"+ "\n"+
+				"nombre= " + super.nombre + "\n"+
+				"edad= " + super.edad + "\n"+
+				"dirección= " + super.direccion + "\n"+ 
+				"salario= " +super.salario + "€" + "\n"+
+				"anos_mandato= " + anos_mandato + "\n"+
+				"********************************";
 	}
 	
 	
