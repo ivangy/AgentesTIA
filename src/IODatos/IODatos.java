@@ -18,6 +18,8 @@ import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.Scanner;
 
+//import com.sun.tools.javac.util.List;
+
 import AgentesTIA.Agente007;
 import AgentesTIA.AgenteEspia;
 import AgentesTIA.AgenteJefazo;
@@ -92,15 +94,36 @@ public class IODatos {
 	 * 
 	 * @param ruta es el nombre del archivo
 	 */
-	public static void borrarInformacion(String ruta, String dir) {
-		String nombreFichero = dir + ruta;
-		File f = new File(nombreFichero);
-		File direct = new File(ruta);
+	public static void borrarInformacion(String ext, String dir) {
+		//String nombreFichero = dir + ruta;
+		//File f = new File(dir);
+		//File direct = new File(dir);
 		
-	
-		
-		if (f.exists()) {
-			f.delete();
+		//while (true) {
+		//	System.out.println(f.list());	
+		//}
+		//if (f.exists()) {
+		//	f.delete();
+		//}
+		File carpeta = new File(dir);
+		String[] listado = carpeta.list();
+		if (listado == null || listado.length == 0) {
+		    System.out.println("No hay elementos dentro de la carpeta");
+		    return;
+		}
+		else {
+		    for (int i=0; i< listado.length; i++) {
+		        System.out.println(listado[i]);
+		        int punto = listado[i].indexOf(".");
+		        String borrar= listado[i].substring(punto, (listado[i]).length());
+		        if(borrar.equals(ext)) {
+		        	if(!listado[i].equals("Agentes.dat")) {
+		        		File f = new File(dir+listado[i]);
+		        		f.delete();
+		        	}
+		        	
+		        }
+		    }
 		}
 	}
 
@@ -109,6 +132,9 @@ public class IODatos {
 	 * borre los archivos .dat
 	 */
 	public static void encriptarInformacion(String dir) {
+		boolean sepuedeBorrarArmas = false;
+		boolean sepuedeBorrarPisos = false;
+		
 		String rut = dir;
 		String armas = rut + "Armas.txt";
 		String armasEn = rut + "Armas.dat";
@@ -135,8 +161,9 @@ public class IODatos {
 					}
 
 				}
-
-				borrarInformacion("Armas.txt", dir);
+				
+				sepuedeBorrarArmas= true;
+				//borrarInformacion("Armas.txt", dir);
 
 			} catch (IOException ioe) {
 				ioe.printStackTrace();
@@ -159,13 +186,19 @@ public class IODatos {
 					}
 
 				}
-				borrarInformacion("Pisos.txt", dir);
+				
+				sepuedeBorrarPisos= true;
+				//borrarInformacion("Pisos.txt", dir);
 
 			} catch (IOException ioe) {
 				ioe.printStackTrace();
 			}
 		} else
 			System.out.println("Ya está encriptado el archivo Pisos");
+		
+		if(sepuedeBorrarArmas== true && sepuedeBorrarPisos== true) {
+			borrarInformacion(".txt",dir);
+		}
 
 	}
 
@@ -175,7 +208,9 @@ public class IODatos {
 	 */
 	public static void desencriptarInformacion(String dir) {
 		String rut = dir;
-
+		boolean sepuedeBorrarArmas = false;
+		boolean sepuedeBorrarPisos = false;
+		
 		String armas = rut + "Armas.txt";
 		String pisos = rut + "Pisos.txt";
 		String armasEn = rut + "Armas.dat";
@@ -217,7 +252,9 @@ public class IODatos {
 							// TODO Auto-generated catch block
 							// e.printStackTrace();
 						}
-						borrarInformacion("Armas.dat", dir);
+						sepuedeBorrarArmas= true;
+						//borrarInformacion("Armas.dat", dir);
+						
 					} else
 						System.out.println("Ya está desencriptado el archivo Armas");
 
@@ -241,10 +278,14 @@ public class IODatos {
 							// TODO Auto-generated catch block
 							// e.printStackTrace();
 						}
-						borrarInformacion("Pisos.dat", dir);
+						sepuedeBorrarPisos= true;
+						//borrarInformacion("Pisos.dat", dir);
 					} else
 						System.out.println("Ya está desencriptado el archivo Pisos");
 
+					if(sepuedeBorrarArmas== true && sepuedeBorrarPisos== true) {
+						borrarInformacion(".dat",dir);
+					}
 					fin = "fin";
 				} else
 					System.out.println("ERROR");
