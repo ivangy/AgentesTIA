@@ -105,6 +105,7 @@ public class IODatos {
 		//if (f.exists()) {
 		//	f.delete();
 		//}
+		
 		File carpeta = new File(dir);
 		String[] listado = carpeta.list();
 		if (listado == null || listado.length == 0) {
@@ -113,7 +114,6 @@ public class IODatos {
 		}
 		else {
 		    for (int i=0; i< listado.length; i++) {
-		        System.out.println(listado[i]);
 		        int punto = listado[i].indexOf(".");
 		        String borrar= listado[i].substring(punto, (listado[i]).length());
 		        if(borrar.equals(ext)) {
